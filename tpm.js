@@ -1,10 +1,9 @@
 // get your token from bot father: https://t.me/BotFather
 const token = 'xxxxxxxxx:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
 const TelegramBot = require('node-telegram-bot-api')
 const bot = new TelegramBot(token, {polling: true})
 
-bot.on('message', (msg) => {
+bot.on('message', async (msg) => {
   if (msg.text === '/start') {
     bot.sendMessage(msg.chat.id, `Your id: ${msg.chat.id}`)
   } else {
@@ -19,17 +18,15 @@ bot.on('message', (msg) => {
       bot.sendMessage(msg.chat.id, `Wrong syntax.\nExample\n\nFriend Id\nYour Message`)
       return
     }
-    bot.sendMessage(id, `Sender: ${id}\n\n${lines.join('\n')}`, {parse_mode: 'HTML'})
-    .then((result) => {
-      bot.sendMessage(msg.chat.id, 'Your message sent')
-    })
-    .catch((err) => {
-      console.log(err)
+    try {
+      await bot.sendMessage(id, `Sender: ${id}\n\n${lines.join('\n')}`, {parse_mode: 'HTML'})
+      await bot.sendMessage(msg.chat.id, 'Your message sent')
+    } catch (err) {
       if (err.message.indexOf('chat not found') > 0) {
         bot.sendMessage(msg.chat.id, `User has not joined yet.`)
       } else {
         bot.sendMessage(msg.chat.id, `Only text and emoji are allowed.`)
       }
-    })
+    }
   }
 })
