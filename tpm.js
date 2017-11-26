@@ -8,12 +8,10 @@ bot.on('message', (msg) => {
   if (msg.text === '/start') {
     bot.sendMessage(msg.chat.id, `Your id: ${msg.chat.id}`)
   } else {
-    let lines, id, message
+    let lines, id
     try {
       lines = msg.text.split(/\n+/g)
-      id = Number(lines[0])
-      lines.shift()
-      message = lines.join('\n')
+      id = Number(lines.shift())
       if (isNaN(id)) {
         throw new Error('Wrong Syntax')
       }
@@ -21,7 +19,7 @@ bot.on('message', (msg) => {
       bot.sendMessage(msg.chat.id, `Wrong syntax.\nExample\n\nFriend Id\nYour Message`)
       return
     }
-    bot.sendMessage(id, `Sender: ${id}\n\n${message}`, {parse_mode: 'HTML'})
+    bot.sendMessage(id, `Sender: ${id}\n\n${lines.join('\n')}`, {parse_mode: 'HTML'})
     .then((result) => {
       bot.sendMessage(msg.chat.id, 'Your message sent')
     })
