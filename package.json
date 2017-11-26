@@ -1,0 +1,34 @@
+{
+  "name": "telegram-private-message",
+  "version": "0.1.0",
+  "description": "Telegram anonymizer proxy bot",
+  "main": "tpm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xaqron/telegram-private-message.git"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "private",
+    "message",
+    "anonymizer",
+    "proxy"
+  ],
+  "author": "Xaqron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Xaqron/telegram-private-message/issues"
+  },
+  "homepage": "https://github.com/Xaqron/telegram-private-message#readme",
+  "devDependencies": {
+    "cspell": "*",
+    "standard": "*"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.29.0"
+  }
+}
