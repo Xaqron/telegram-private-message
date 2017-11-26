@@ -21,7 +21,7 @@ bot.on('message', (msg) => {
       bot.sendMessage(msg.chat.id, `Wrong syntax.\nExample\n\nFriend Id\nYour Message`)
       return
     }
-    bot.sendMessage(id, message, {parse_mode: 'HTML'})
+    bot.sendMessage(id, `Sender: ${id}\n\n${message}`, {parse_mode: 'HTML'})
     .then((result) => {
       bot.sendMessage(msg.chat.id, 'Your message sent')
     })

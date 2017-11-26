@@ -1,6 +1,6 @@
 {
   "name": "telegram-private-message",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Telegram anonymizer proxy bot",
   "main": "tpm.js",
   "scripts": {
