@@ -19,7 +19,7 @@ bot.on('message', async (msg) => {
       return
     }
     try {
-      await bot.sendMessage(id, `Sender: ${id}\n\n${lines.join('\n')}`, {parse_mode: 'HTML'})
+      await bot.sendMessage(id, `Sender: ${msg.chat.id}\n\n${lines.join('\n')}`, {parse_mode: 'HTML'})
       await bot.sendMessage(msg.chat.id, 'Your message sent')
     } catch (err) {
       if (err.message.indexOf('chat not found') > 0) {
