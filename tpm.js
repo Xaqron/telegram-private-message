@@ -14,15 +14,14 @@ bot.on('message', async (msg) => {
       if (isNaN(id)) {
         throw new Error('Wrong Syntax')
       }
+      try {
+        await bot.sendMessage(id, `Sender: ${msg.chat.id}\n\n${lines.join('\n')}`, {parse_mode: 'HTML'})
+        await bot.sendMessage(msg.chat.id, 'Your message sent')
+      } catch (err) {
+        bot.sendMessage(msg.chat.id, `User has not joined yet.`)
+      }
     } catch (err) {
       bot.sendMessage(msg.chat.id, `Wrong syntax.\nExample\n\nFriend Id\nYour Message`)
-      return
-    }
-    try {
-      await bot.sendMessage(id, `Sender: ${msg.chat.id}\n\n${lines.join('\n')}`, {parse_mode: 'HTML'})
-      await bot.sendMessage(msg.chat.id, 'Your message sent')
-    } catch (err) {
-      bot.sendMessage(msg.chat.id, `User has not joined yet.`)
     }
   }
 })
